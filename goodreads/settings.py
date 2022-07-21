@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
@@ -88,11 +88,11 @@ WSGI_APPLICATION = 'goodreads.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME'),
-        'HOST': env('DB_HOST'),
+        'NAME': 'goodreads',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD')
+        'USER': 'postgres',
+        'PASSWORD': 'postgres'
     }
 }
 
