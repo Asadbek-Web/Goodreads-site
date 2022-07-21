@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+ 
+{% block title %} Profile Page {% endblock %}
+
+{% block content %}
+
+
+    <div class="profile-page image d-flex flex-column justify-content-center align-items-center"> 
+        <button class="btn btn-outline-dark">
+            <img class="profile-pic" alt="Profile picture" src="{{ user.profile_picture.url }}">
+        </button> 
+        {% if user.first_name or user.last_name %}
+            <span class="name mt-3"><b>Name:</b> {{user.first_name}} {{user.last_name}}</span> 
+        {% endif %}
+        <span class="idd my-2"><b>Username:</b> @{{user.username}}</span> 
+        <span class="idd"><b>Email:</b> {{user.email}}</span> 
+        <div class=" d-flex mt-3"> <a class="btn btn-dark edit-profile" href="{% url "users:profile-edit" %}">Edit profile</a> </div> 
+        <div class=" px-2 rounded mt-4 date "> <span class="join">Joined <b>{{user.date_joined | date:"M d, Y"}}</b></span> </div>
+    </div> 
+
+
+    {% comment %} <h3> Profile Page</h3>
+
+    
+
+    <p>Username : {{user.username}}</p>
+    <p>First name : {{user.first_name}}</p>
+    <p>Last name : {{user.last_name}}</p>
+    <p>Email : {{user.email}}</p>
+
+    <span></span> {% endcomment %}
+
+{% endblock %}

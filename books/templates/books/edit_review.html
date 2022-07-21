@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit review page {% endblock %}
+
+{% block content %}
+    <h3>Edit review 📝</h3>
+
+    <div class="row mb-5">
+        <div class="col-5">
+            <form method="post" action="{% url 'books:edit-review' book.id  review.id %}"> 
+                {% csrf_token %}
+
+                {{ review_form | crispy }}
+
+                <button class="btn btn-primary">Save changes</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

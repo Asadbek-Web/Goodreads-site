@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title %} Book Detail Page {% endblock %}
+
+
+{% block content %}
+    <h3>Book Details</h3>
+
+    <div class="row mb-5">
+        <div class="col-2">
+            <img class="cover-pic rounded" alt="cover image" src="{{ book.cover_picture.url }}">   
+        </div>
+
+        <div class="col-6 ms-4">
+            <h3>{{ book.title }}</h3>
+            {% if book_author.is_valid %}
+                <span class="fw-lighter">
+                    Written by <a href={% url 'author:author' book.id %}>
+                    {% for book_author in book.bookauthor_set.all %}
+                        {% if forloop.last %}
+                            {{ book_author.author.full_name }}
+                        {% else %}
+                            {{ book_author.author.full_name }},
+                        {% endif %}
+                    {% endfor %} </a>
+                </span>
+            {% else %}
+
+                <p> {{ book.description }} </p>
+                <p class="fst-italic text-muted"><b>ISBN:</b>( {{ book.isbn }} ) </p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-5">
+
+            <form method="post" action="{% url 'books:reviews' book.id %}"> 
+                {% csrf_token %}
+
+                {{ review_form | crispy }}
+
+                <button class="btn btn-primary my-3">Save review</button>
+            </form>
+            {% comment %} <input type="hidden" name="next" value="{{ request.path }}">
+            <button type="submit">&#10094;Go back</button> {% endcomment %}
+            <a href="{% url 'books:list' %}" class="back">&#10094; Go back</a>
+        </div>
+    </div>
+
+
+    {% if book.bookreview_set.exists %}
+        <h3>Reviews</h3> <hr>
+
+        {% for review in book.bookreview_set.all %}
+
+            <div class="row mb-3">
+                <div class="col-1">
+                    <img class="small-profile-pic" src="{{ review.user.profile_picture.url }}">
+                </div>
+
+                <div class="col-7 ms-3">
+                    <div class="mb-3">
+                        <b class="badge bg-dark text-wrap fs-6" style="width: auto; height:auto;">{{ review.user.username}}</b> 
+                        rated it <b>{{ review.stars_given }}</b> stars |  <span class="font-monospace">{{ review.created_at }}⌚ </span> 
+                        {% if review.user == request.user %}
+                            | 
+                             <a href="{% url 'books:edit-review' book.id review.id %}"> <i class="bi bi-pen link-dark"></i></a>
+                            <a href="{% url 'books:confirm-delete-review' book.id review.id %}"> <i class="bi bi-trash3-fill link-danger"></i></a>
+                        {% endif %}
+                        </div>
+                    <p class="fw-lighter" style="font-size: 15px;">{{ review.comment }}</p>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+ 
+{% endblock %}

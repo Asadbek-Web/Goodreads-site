@@ -1,0 +1,60 @@
+{% extends "base.html"%}
+
+
+{% block title%} Books Page {% endblock %}
+
+{% block content %}
+
+    <h1>Books </h1>
+
+    <div class="row mb-3">
+        <div class="col-4">
+            <form class="d-flex" method="get">
+                <input class="form-control me-2" placeholder="🔎 Search" type="text" name="q" value="{{ search_query }}">
+
+                <button class="btn btn-outline-primary">Search</button>
+            </form>
+        </div>
+    </div>
+
+    {% if page_obj %}
+        {% for book in page_obj.object_list %}
+            <div class="row mb-4 ms-1 list-page">
+                <div class="col-2">
+                    <img class="cover-pic rounded" alt="Cover image" src="{{ book.cover_picture.url }}">
+                </div>
+                <div class="col-6 ms-4">
+                    <h5>{{ book.title }}</h5>
+                    <p>{{ book.description | truncatechars:600 }}</p>
+
+                    <span><a class="sea-more" href="{% url 'books:detail' book.id %}">Sea more➩</a></span>
+                </div>
+            </div>
+        {% endfor %}
+        
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                {% endif %}
+
+                <li class="page-item active">
+                    <a class="page-link" href="#">{{ page_obj.number }}</a>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+
+    {% else %}
+        No books found😢<br>
+
+        <a class="back" href="{% url 'books:list' %}"> Back </a>
+    {% endif %}
+    
+
+{% endblock %}

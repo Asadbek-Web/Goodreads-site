@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %} Author page {% endblock %}
+
+{% block content %}
+    <h1> about book author</h1>
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHJnkEu9bIvsQ0ZHbirwzDMFCC7Z8tQJSZrw&usqp=CAU" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{book_author.author.full_name }}</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+
+{% endblock content %}
