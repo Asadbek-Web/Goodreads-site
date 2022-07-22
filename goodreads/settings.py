@@ -1,6 +1,7 @@
 
 import environ
 import os
+import django_heroku
 
 
 from pathlib import Path
@@ -18,10 +19,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-!6!6#x*jol$o3chpg^i*zy-zt@eqq55_^c@-%x&#747$b(mema'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG =True
 
 ALLOWED_HOSTS = ['*']
 
@@ -155,3 +157,5 @@ DJANGO_SETTINGS_MODULE = "goodreads.settings"
 # }
 
 CRISPY_TEMPLATE_PACK  = 'bootstrap5'
+
+django_heroku.settings(locals())
