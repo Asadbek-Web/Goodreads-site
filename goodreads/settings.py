@@ -88,11 +88,11 @@ WSGI_APPLICATION = 'goodreads.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd6i9k5lgq2n7dg',
-        'HOST': 'ec2-44-206-11-200.compute-1.amazonaws.com',
+        'NAME': 'de7g6b84l24jmt',
+        'HOST': 'ec2-44-206-197-71.compute-1.amazonaws.com',
         'PORT': '5432',
-        'USER': 'rjjftpuykbbxlf',
-        'PASSWORD': '29457fa3d944d145d6a58d7570503004192814ac3f91db5723bc522eb7f5542e'
+        'USER': 'xuqmbswijifsup',
+        'PASSWORD': '6c7919276b0afdb8fb19df71365367f1967aa837c897bd8380510e8d974d5d08'
     }
 }
 
