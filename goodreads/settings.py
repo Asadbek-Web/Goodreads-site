@@ -18,12 +18,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-!6!6#x*jol$o3chpg^i*zy-zt@eqq55_^c@-%x&#747$b(mema'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =env('DEBUG')
+DEBUG =True
 
-ALLOWED_HOSTS = ['goodreads--project.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = "users:login"
 
@@ -88,11 +89,11 @@ WSGI_APPLICATION = 'goodreads.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'de7g6b84l24jmt',
-        'HOST': 'ec2-44-206-197-71.compute-1.amazonaws.com',
+        'NAME': 'goodreads',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
-        'USER': 'xuqmbswijifsup',
-        'PASSWORD': '6c7919276b0afdb8fb19df71365367f1967aa837c897bd8380510e8d974d5d08'
+        'USER': 'postgres',
+        'PASSWORD': 'postgres'
     }
 }
 

@@ -15,7 +15,8 @@
 
         <div class="col-6 ms-4">
             <h3>{{ book.title }}</h3>
-            {% if book_author.is_valid %}
+
+            {% comment %} {% if book_author.is_valid %} {% endcomment %}
                 <span class="fw-lighter">
                     Written by <a href={% url 'author:author' book.id %}>
                     {% for book_author in book.bookauthor_set.all %}
@@ -26,11 +27,11 @@
                         {% endif %}
                     {% endfor %} </a>
                 </span>
-            {% else %}
+            {% comment %} {% else %} {% endcomment %}
 
                 <p> {{ book.description }} </p>
                 <p class="fst-italic text-muted"><b>ISBN:</b>( {{ book.isbn }} ) </p>
-            {% endif %}
+            {% comment %} {% endif %} {% endcomment %}
         </div>
     </div>
 
@@ -67,11 +68,11 @@
                         rated it <b>{{ review.stars_given }}</b> stars |  <span class="font-monospace">{{ review.created_at }}⌚ </span> 
                         {% if review.user == request.user %}
                             | 
-                             <a href="{% url 'books:edit-review' book.id review.id %}"> <i class="bi bi-pen link-dark"></i></a>
+                            <a href="{% url 'books:edit-review' book.id review.id %}"> <i class="bi bi-pen link-dark"></i></a>
                             <a href="{% url 'books:confirm-delete-review' book.id review.id %}"> <i class="bi bi-trash3-fill link-danger"></i></a>
                         {% endif %}
                         </div>
-                    <p class="fw-lighter" style="font-size: 15px;">{{ review.comment }}</p>
+                    <p class="fw-lighter" style="font-size: 14px;">{{ review.comment }}</p>
                 </div>
             </div>
 

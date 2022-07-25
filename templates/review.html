@@ -20,7 +20,7 @@
                                         evaluated <b>{{ review.stars_given }}</b> stars for this book | <span class="fw-lighter">{{ review.created_at | date:"M d Y" }}</span>
                                 </div>
                             </div>
-                            <p class="fw-lighter"style="font-size: 15px;">
+                            <p class="fw-lighter"style="font-size: 14px;">
                                 {{ review.comment | truncatechars:250 }}
                             </p>
                             <img class="cover-pic rounded" alt="Cover image" src="{{ review.book.cover_picture.url }}">

@@ -11,10 +11,6 @@
     border-radius:50%;
 }
 
-.edit-profile:hover{
-    background-color: #fff;
-    color: black;
-}
 
 .login-profile{
     border: 1px solid black;
@@ -25,10 +21,9 @@
 
 .cover-pic{
     margin-top: 10px;
-    box-shadow: 5px 5px dimgrey ;
+    box-shadow: 4px 4px lightgrey;
     width: 200px;
     height: 300px;
-    /* box-shadow: px 5px; */
 }
 
 .colors{
@@ -86,18 +81,19 @@
 }
 
 div > .list-page{
-    /* border:1px solid rgb(160, 159, 159); */
-    border:1px solid rgb(105, 103, 103);
+    border:1px solid rgb(160, 159, 159);
+    /* border:1px solid rgb(105, 103, 103); */
     border-radius: 12px;
     padding:16px 2px;
     box-shadow: 4px 4px rgb(165, 165, 165);
+    /* box-shadow: 4px 4px rgb(105, 103, 103); */
 }
 
 
 .sea-more{
     /* border:inherit; */
     text-decoration: none;
-    border: 1px solid blue;
+    border: 1px solid teal;
     border-radius: 5px;
     padding:5px 10px;
 }
@@ -146,10 +142,6 @@ footer{
     margin-left: -90px;
 }
 
-.comments{
-    font-size: 5px;
-    color:teal;
-}
 
 
 
@@ -171,7 +163,7 @@ footer{
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-transform: uppercase;
   font-display: swap;
-  text-shadow: 0 0 10px teal;
+  text-shadow: 0 0 10px blue;
   margin-left: 150px;
 }
 
